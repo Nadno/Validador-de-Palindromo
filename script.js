@@ -17,7 +17,7 @@ const getReverseString = (string) => {
 };
 
 const getNormalizedString = (string) => {
-  const NORMALIZE_PUNCTUATION = /\s|[\d,.?!:'"]/g;
+  const NORMALIZE_PUNCTUATION = /\s|[\d,.?!:'\-"]/g;
   const NORMALIZE_A = /[àáâãäå]/g;
   const NORMALIZE_E = /[èéêë]/g;
   const NORMALIZE_I = /[íìîï]/g;
