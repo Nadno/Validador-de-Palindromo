@@ -1,18 +1,13 @@
-const invalidValue = (value) => (typeof value !== "string" || !value || value.length < 3);
+const invalidValue = (value) => 
+  (typeof value !== "string" || !value || value.length < 3);
 
-const stringToArray = (value) => {
-  const array = value.split("");
-  const removeSpaces = letter => letter.trim();
+const arrayToString = array => 
+  array.map(letter => letter).join("");
 
-  return array.filter(removeSpaces);
-};
-
-const arrayToString = array => array.map(letter => letter).join("");
-
-const reverseArray = array => array.reverse();
 const getReverseString = (string) => {
-  const array = stringToArray(string);
-  const reversedArray = reverseArray(array);
+  const array = string.split("");
+  const reversedArray = array.reverse();
+
   return arrayToString(reversedArray);
 };
 
@@ -40,7 +35,7 @@ const getNormalizedString = (string) => {
 };
 
 
-const isPalindromo = (value) => {
+const isPalindrome = (value) => {
   const string = value.trim();
   if (invalidValue(string)) return;
   
@@ -50,13 +45,14 @@ const isPalindromo = (value) => {
   return normalizedString === reversedString;
 };
 
+
 const checkButton = document.querySelector("#check");
 
 checkButton.addEventListener("click", () => {
   const value = document.querySelector("#text").value;
   const result = document.querySelector("#result");
 
-  if (isPalindromo(value)) {
+  if (isPalindrome(value)) {
     result.innerHTML = "É um palíndromo";
   } else {
     result.innerHTML = "Não é um palíndromo";
