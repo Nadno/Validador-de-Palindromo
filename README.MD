@@ -2,7 +2,7 @@
 <p>A página possui um estilo simples pois o foco era criar um código que verifique se a palavra ou frase passada é um palíndromo ou não.</p>
 
 <p>O código primeiro adiciona uma ação ao clique do botão criado em HTML, e então passa pela função <em>isPalindromo</em>, que retorna uma comparação entre a string normal, e uma string invertida.</p>
-</hr>
+<hr/>
 <img src="/readme/1-2.png">
 </hr>
 <p>A segunda função <em>invalidValue</em> retorna verdadeiro para valores indesejados, e caso retorne falso, passa para <em>getNormalizedString</em>, que retira pontuações e acentos, para que seja possível fazer uma comparação entre as strings.</p>
