@@ -27,27 +27,27 @@ const isPalindrome = value => {
   return result;
 };
 
+const $palindromeChecker = document.querySelector('#palindrome-checker'),
+  $inputText = document.querySelector('#text');
+$result = document.querySelector('#result');
 
-const isPalindrome = (value) => {
-  const string = value.trim();
-  if (invalidValue(string)) return;
-  
-  const normalizedString = getNormalizedString(string);
-  const reversedString = getReverseString(normalizedString);
+$inputText.addEventListener('input', () => {
+  if (!$result.dataset.hasResult) return;
+  $result.innerHTML = '';
+  delete $result.dataset.hasResult;
+});
 
-  return normalizedString === reversedString;
-};
+$palindromeChecker.addEventListener('submit', e => {
+  e.preventDefault();
 
+  const value = $inputText.value;
+  if (!value) return;
 
-const checkButton = document.querySelector("#check");
-
-checkButton.addEventListener("click", () => {
-  const value = document.querySelector("#text").value;
-  const result = document.querySelector("#result");
+  $result.dataset.hasResult = true;
 
   if (isPalindrome(value)) {
-    result.innerHTML = "É um palíndromo";
+    $result.innerHTML = 'É um palíndromo';
   } else {
-    result.innerHTML = "Não é um palíndromo";
-  };
+    $result.innerHTML = 'Não é um palíndromo';
+  }
 });
