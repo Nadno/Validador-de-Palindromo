@@ -1,35 +1,28 @@
-const invalidValue = (value) => 
-  (typeof value !== "string" || !value || value.length < 3);
+const nothingButLettersAndDigits = str =>
+  str
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[^a-z0-9]+/g, '');
 
-const arrayToString = array => 
-  array.map(letter => letter).join("");
+const isPalindrome = value => {
+  const string = nothingButLettersAndDigits(value);
+  if (!string) return;
 
-const getReverseString = (string) => {
-  const array = string.split("");
-  const reversedArray = array.reverse();
+  const chars = [];
 
-  return arrayToString(reversedArray);
-};
+  for (const char of string) {
+    chars.push(char);
+    chars.push(char);
+  }
 
-const getNormalizedString = (string) => {
-  const NORMALIZE_PUNCTUATION = /\s|[\d,.?!:'\-"]/g;
-  const NORMALIZE_A = /[àáâãäå]/g;
-  const NORMALIZE_E = /[èéêë]/g;
-  const NORMALIZE_I = /[íìîï]/g;
-  const NORMALIZE_O = /[óòõôö]/g
-  const NORMALIZE_U = /[úùûü]/g;
-  const NORMALIZE_C = /[ç]/g;
+  let result = true;
 
-  let result = string.toLowerCase();
-
-  result = result
-    .replace(NORMALIZE_PUNCTUATION, "")
-    .replace(NORMALIZE_A, "a")
-    .replace(NORMALIZE_E,"e")
-    .replace(NORMALIZE_I,"i")
-    .replace(NORMALIZE_O,"o")
-    .replace(NORMALIZE_U,"u")
-    .replace(NORMALIZE_C,"c");
+  while (!!chars.length) {
+    if (chars.shift() !== chars.pop()) {
+      result = false;
+      break;
+    }
+  }
 
   return result;
 };
